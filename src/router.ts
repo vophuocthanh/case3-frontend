@@ -11,6 +11,8 @@ export type Path =
   | `/login`
   | `/search`
   | `/users`
+  | `/users/create`
+  | `/users/update`
 
 export type Params = {
   '/:id': { id: string }

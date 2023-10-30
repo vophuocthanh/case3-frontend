@@ -18,7 +18,8 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { LogOut } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
-
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 interface Props {
   // user: User
   isToggler: boolean
@@ -28,6 +29,18 @@ interface Props {
 
 export default function Header({ loading }: Props) {
   const navigate = useNavigate()
+  const [data, setData] = useState([])
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const res = await axios.get('http://localhost:8081/users')
+        setData(res.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getData()
+  }, [])
   const logout = () => {
     // localStorage.removeItem('access_token')
     navigate('/login')
@@ -68,14 +81,11 @@ export default function Header({ loading }: Props) {
                         />
                         <AvatarFallback></AvatarFallback>
                       </Avatar>
-                      <div className="w-max">
-                        <h2 className="text-slate-800">
-                          {/* {user.firstName + ' ' + user.lastName} */}
-                        </h2>
-                        <p className="text-xs text-gray-400">
-                          Marketing Administrator
-                        </p>
-                      </div>
+                      {data.map(user => (
+                        <div className="w-max" key={user.User_id}>
+                          {/* <h2 className="text-slate-800">{user.User_Name}</h2> */}
+                        </div>
+                      ))}
                     </>
                   )}
                 </div>
