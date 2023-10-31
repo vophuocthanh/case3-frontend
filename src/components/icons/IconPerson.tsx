@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-const IconPerson = (props: JSX.IntrinsicElements["svg"]) => {
+const IconPerson = (props: JSX.IntrinsicElements['svg']) => {
   return (
     <svg
       width={24}
@@ -32,7 +32,7 @@ const IconPerson = (props: JSX.IntrinsicElements["svg"]) => {
         "
       />
     </svg>
-  );
-};
+  )
+}
 
-export default IconPerson;
+export default IconPerson

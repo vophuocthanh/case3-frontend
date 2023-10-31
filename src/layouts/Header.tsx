@@ -22,8 +22,8 @@ import {
 import { Skeleton } from '@/components/ui/Skeleton'
 interface Props {
   // user: User
-  isToggler: boolean
-  onToggle: () => void
+  isToggler?: boolean
+  onToggle?: () => void
   loading?: boolean
 }
 

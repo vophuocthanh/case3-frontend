@@ -1,9 +1,7 @@
 import {
   IconBuilding,
   IconDashboard,
-  IconMessage,
   IconPerson,
-  IconProfile,
   IconStar
 } from '@/components/icons'
 import React from 'react'

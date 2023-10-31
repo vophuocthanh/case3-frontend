@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-const IconBuilding = (props: JSX.IntrinsicElements["svg"]) => {
+const IconBuilding = (props: JSX.IntrinsicElements['svg']) => {
   return (
     <svg
       width={24}
@@ -35,7 +35,7 @@ const IconBuilding = (props: JSX.IntrinsicElements["svg"]) => {
         fill="currentColor"
       />
     </svg>
-  );
-};
+  )
+}
 
-export default IconBuilding;
+export default IconBuilding

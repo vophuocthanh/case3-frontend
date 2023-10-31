@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-const IconNotification = (props: JSX.IntrinsicElements["svg"]) => {
+const IconNotification = (props: JSX.IntrinsicElements['svg']) => {
   return (
     <svg
       width={24}
@@ -18,7 +18,7 @@ const IconNotification = (props: JSX.IntrinsicElements["svg"]) => {
       />
       <circle cx="18.5" cy="5.5" r="3.5" fill="#EB5757" />
     </svg>
-  );
-};
+  )
+}
 
-export default IconNotification;
+export default IconNotification

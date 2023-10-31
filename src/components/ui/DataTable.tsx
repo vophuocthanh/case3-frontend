@@ -4,7 +4,6 @@ import {
   getCoreRowModel,
   useReactTable
 } from '@tanstack/react-table'
-
 import {
   Table,
   TableBody,
@@ -12,7 +11,7 @@ import {
   TableHead,
   TableHeader,
   TableRow
-} from '@/components/ui/table'
+} from './Table'
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]

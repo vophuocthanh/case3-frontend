@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-const IconProfile = (props: JSX.IntrinsicElements["svg"]) => {
+const IconProfile = (props: JSX.IntrinsicElements['svg']) => {
   return (
     <svg
       width={24}
@@ -23,7 +23,7 @@ const IconProfile = (props: JSX.IntrinsicElements["svg"]) => {
         fill="currentColor"
       />
     </svg>
-  );
-};
+  )
+}
 
-export default IconProfile;
+export default IconProfile

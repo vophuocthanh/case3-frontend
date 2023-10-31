@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-const IconSearch = (props: JSX.IntrinsicElements["svg"]) => {
+const IconSearch = (props: JSX.IntrinsicElements['svg']) => {
   return (
     <svg
       width={16}
@@ -15,7 +15,7 @@ const IconSearch = (props: JSX.IntrinsicElements["svg"]) => {
         fill="#808191"
       />
     </svg>
-  );
-};
+  )
+}
 
-export default IconSearch;
+export default IconSearch

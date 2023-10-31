@@ -7,8 +7,8 @@ import axios from 'axios'
 
 export default function Login() {
   const navigate = useNavigate()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email] = useState('')
+  const [password] = useState('')
   function onSubmit(e) {
     e.preventDefault()
     axios
