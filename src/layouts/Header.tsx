@@ -17,7 +17,7 @@ import {
 import { Skeleton } from '@/components/ui/skeleton'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { LogOut } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 interface Props {
@@ -46,16 +46,20 @@ export default function Header({ loading }: Props) {
     navigate('/login')
   }
   return (
-    <div className="flex items-center justify-between px-5 py-4">
+    <div className="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-purple-700 via-red-500 to-yellow-300">
       <div className="flex items-center gap-[82px] flex-1">
         {/* <Logo /> */}
         {/* <h1 className="text-2xl font-semibold text-primary">sậhuhdajks</h1> */}
-        <image
+        {/* <image
           xlinkHref="https://wall.vn/wp-content/uploads/2019/11/hinh-nen-minions-de-thuong-3.jpg"
           alt="Nhom-3"
           className="object-cover w-[100px] h-[50px]"
-        />
-
+        /> */}
+        <Link to="/" className="flex items-center ml-10">
+          <h1 className="text-3xl font-medium text-center bg-gradient-to-r from-pink-400 via-blue-500 to-green-300 text-transparent bg-clip-text rounded">
+            Nhóm 3
+          </h1>
+        </Link>
         <Search />
       </div>
       <TooltipProvider>
@@ -111,12 +115,12 @@ export default function Header({ loading }: Props) {
 
 function Search() {
   return (
-    <div className=" px-[10px] rounded-lg bg-grayf4 flex items-center gap-2 flex-[0_1_405px] h-[38px]">
+    <div className=" px-[10px] rounded-lg bg-[#f5f5f5] flex items-center gap-2 flex-[0_1_405px] h-[38px]">
       <IconSearch></IconSearch>
       <input
         type="text"
-        className="w-full text-xs font-normal bg-transparent outline-none text-primary placeholder:text-gray80"
-        placeholder="Search Property, Customer etc"
+        className="w-full text-lg font-normal bg-transparent outline-none text-primary"
+        placeholder="Search User, Employee..."
       />
     </div>
   )

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Slidebar = () => {
   return (
-    <div className="px-4 py-6">
+    <div className="px-4 py-6 border-r-2 ">
       {sidebarLinks.map(link => (
         <SidebarLink
           // isActive={pathname === link.path}

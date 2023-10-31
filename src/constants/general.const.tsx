@@ -22,23 +22,13 @@ export const sidebarLinks = [
     path: '/users'
   },
   {
-    title: 'Agent',
+    title: 'Employee',
     icon: <IconBuilding />,
-    path: '/agent'
+    path: '/employee'
   },
   {
-    title: 'Review',
+    title: 'PayRates',
     icon: <IconStar />,
-    path: '/review'
-  },
-  {
-    title: 'Message',
-    icon: <IconMessage />,
-    path: '/message'
-  },
-  {
-    title: 'My Profile',
-    icon: <IconProfile />,
-    path: '/my-profile'
+    path: '/pay-rates'
   }
 ]

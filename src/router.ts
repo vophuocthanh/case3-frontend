@@ -7,8 +7,14 @@ export type Path =
   | `/`
   | `/:id`
   | `/admin`
+  | `/employee`
+  | `/employee/create`
+  | `/employee/update`
   | `/forgot-password`
   | `/login`
+  | `/pay-rates`
+  | `/pay-rates/create`
+  | `/pay-rates/update`
   | `/search`
   | `/users`
   | `/users/create`

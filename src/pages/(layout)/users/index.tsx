@@ -1,13 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import axios from 'axios'
-import Create from '@/components/create/Create'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/Button'
 import { Edit, Trash } from 'lucide-react'
-import { Avatar } from '@/components/ui/Avatar'
 import { DataTable } from '@/components/ui/DataTable'
 import { toast } from '@/components/ui/use-toast'
-import UpdateUser from './update'
 
 export interface User {
   User_id: string
@@ -20,6 +17,9 @@ export interface User {
 const users = () => {
   const [user, setUser] = useState<User | null>(null)
   const [data, setData] = useState([])
+  useEffect(() => {
+    document.title = 'Dashboard | Users'
+  }, [])
   useEffect(() => {
     const getData = async () => {
       try {
@@ -38,8 +38,18 @@ const users = () => {
       )
       if (response.status === 204) {
         console.log('User deleted successfully')
+        toast({
+          title: 'Success',
+          description: 'User updated successfully',
+          variant: 'success'
+        })
       } else {
         console.error('Error deleting user')
+        toast({
+          title: 'Error',
+          description: 'Error update user failed',
+          variant: 'error'
+        })
       }
     } catch (error) {
       console.error('Error deleting user:', error)
@@ -81,8 +91,8 @@ const users = () => {
         header: () => <div className="text-center">Action</div>,
         accessorKey: 'action',
         cell: column => (
-          <div className="flex gap-2 justify-center">
-            <Button variant="outline" className="h-8 w-8 p-0">
+          <div className="flex justify-center gap-2">
+            <Button variant="outline" className="w-8 h-8 p-0">
               <Link to="/users/update">
                 <Edit
                   className="cursor-pointer"
@@ -94,12 +104,12 @@ const users = () => {
             </Button>
             <Button
               variant="outline"
-              className="h-8 w-8 p-0"
+              className="w-8 h-8 p-0"
               onClick={() => {
                 deleteUserMutation(column.row.original.User_id)
               }}
             >
-              <Trash className="cursor-pointer text-red-500" />
+              <Trash className="text-red-500 cursor-pointer" />
             </Button>
           </div>
         )
@@ -108,11 +118,11 @@ const users = () => {
     []
   )
   return (
-    <div className="w-full p-3">
-      <div className=" flex justify-between items-center mb-10">
+    <div className="w-full p-3 mt-10">
+      <div className="flex items-center justify-between mb-10 ">
         <h2 className="text-2xl font-semibold">Users List</h2>
         <Link to="/users/create">
-          <Button>Create</Button>
+          <Button>Create User</Button>
         </Link>
       </div>
       {/* <table>
