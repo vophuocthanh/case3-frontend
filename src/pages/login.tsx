@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { Checkbox } from '@/components/ui/Checkbox'
-import { Link, useNavigate } from '@/router'
+import { useNavigate } from '@/router'
 import { useState } from 'react'
 import axios from 'axios'
 
@@ -38,9 +38,6 @@ export default function Login() {
             <Checkbox />
             <span className="ml-2">Remember Me</span>
           </label>
-          <Link to="/forgot-password" className="text-primary">
-            Forgot Password
-          </Link>
         </div>
         <Button className="w-48" type="submit">
           Sign In
