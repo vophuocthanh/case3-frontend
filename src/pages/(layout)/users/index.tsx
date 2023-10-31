@@ -15,7 +15,7 @@ export interface User {
 }
 
 const users = () => {
-  const [user, setUser] = useState<User | null>(null)
+  const [, setUser] = useState<User | null>(null)
   const [data, setData] = useState([])
   useEffect(() => {
     document.title = 'Dashboard | Users'

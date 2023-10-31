@@ -5,7 +5,18 @@ import { Edit, Trash } from 'lucide-react'
 import React, { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 
+interface PayRates {
+  idPay_Rates: string
+  Pay_Rate_Name: string
+  Value: string
+  Tax_Percentage: string
+  Pay_Type: string
+  Pay_Amount: string
+  PT_Level_C: string
+}
+
 const PayRatesPage = () => {
+  const [, setPayRates] = useState<PayRates | null>(null)
   const [data, setData] = useState([])
   useEffect(() => {
     const getDataEmployee = async () => {
@@ -69,7 +80,7 @@ const PayRatesPage = () => {
                 <Edit
                   className="cursor-pointer"
                   onClick={() => {
-                    // setUser(column.row.original)
+                    setPayRates(column.row.original)
                   }}
                 ></Edit>
               </Link>

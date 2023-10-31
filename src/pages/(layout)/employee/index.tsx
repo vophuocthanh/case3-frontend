@@ -19,7 +19,7 @@ interface Employee {
 }
 
 const EmployeePage = () => {
-  const [employee, setEmployee] = useState<Employee | null>(null)
+  const [, setEmployee] = useState<Employee | null>(null)
   const [data, setData] = useState([])
   useEffect(() => {
     const getDataEmployee = async () => {
