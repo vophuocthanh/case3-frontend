@@ -4,6 +4,7 @@ import { Checkbox } from '@/components/ui/Checkbox'
 import { useNavigate } from '@/router'
 import { useState } from 'react'
 import axios from 'axios'
+import { toast } from '@/components/ui/use-toast'
 
 export default function Login() {
   const navigate = useNavigate()
@@ -11,12 +12,32 @@ export default function Login() {
   const [password] = useState('')
   function onSubmit(e) {
     e.preventDefault()
-    axios
-      .post('http://localhost:8081/login', { email, password })
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
+    const getDataLogin = async () => {
+      try {
+        const response = await axios.post('http://localhost:8081/login', {
+          email,
+          password
+        })
+        console.log(response)
+        toast({
+          title: 'Success',
+          description: 'Login successfully',
+          variant: 'success'
+        })
+        navigate('/')
+      } catch (error) {
+        console.log(error)
+        toast({
+          title: 'Error',
+          description: 'Login failed',
+          variant: 'error'
+        })
+      }
+    }
+    // axios
+    //   .post('http://localhost:8081/login', { email, password })
+    //   .catch(err => console.log(err))
     console.log(email, password)
-    navigate('/')
   }
 
   return (
