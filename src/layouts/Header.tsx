@@ -13,13 +13,13 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar'
-import { Skeleton } from '@/components/ui/Skeleton'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger
 } from '@/components/ui/Tooltip'
+import { Skeleton } from '@/components/ui/Skeleton'
 interface Props {
   // user: User
   isToggler: boolean
