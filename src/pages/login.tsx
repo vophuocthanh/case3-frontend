@@ -38,6 +38,7 @@ export default function Login() {
     //   .post('http://localhost:8081/login', { email, password })
     //   .catch(err => console.log(err))
     console.log(email, password)
+    getDataLogin()
   }
 
   return (
