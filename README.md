@@ -4,7 +4,7 @@
 
 ## Clone project:
 
-`git clone: https://github.com/vothanhphuoc/case3-frontend.git`
+`git clone https://github.com/vothanhphuoc/case3-frontend.git`
 
 ## Instructions:
 
