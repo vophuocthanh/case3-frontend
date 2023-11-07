@@ -54,14 +54,14 @@ const CreateUser = () => {
   }
 
   return (
-    <div className="p-4 flex flex-col justify-center items-center w-full mt-10">
+    <div className="flex flex-col items-center justify-center w-full p-4 mt-10">
       <div className="">
-        <h2 className="mb-4 mx-auto text-center items-center text-2xl font-semibold">
+        <h2 className="items-center mx-auto mb-4 text-2xl font-semibold text-center">
           Create User
         </h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="User_ID" className="mb-3 flex">
+            <label htmlFor="User_ID" className="flex mb-3">
               User ID:
             </label>
             <input
@@ -72,11 +72,11 @@ const CreateUser = () => {
               onChange={handleChange}
               required
               placeholder="Enter User ID"
-              className="w-96 p-2 border border-gray-300 rounded outline-none"
+              className="p-2 border border-gray-300 rounded outline-none w-96"
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="User_Name" className="mb-3 flex">
+            <label htmlFor="User_Name" className="flex mb-3">
               User Name:
             </label>
             <input
@@ -87,11 +87,11 @@ const CreateUser = () => {
               onChange={handleChange}
               required
               placeholder="Enter User Name"
-              className="w-96 p-2 border border-gray-300 rounded outline-none"
+              className="p-2 border border-gray-300 rounded outline-none w-96"
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="Email" className="mb-3 flex">
+            <label htmlFor="Email" className="flex mb-3">
               Email:
             </label>
             <input
@@ -106,7 +106,7 @@ const CreateUser = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="Password" className="mb-3 flex">
+            <label htmlFor="Password" className="flex mb-3">
               Password:
             </label>
             <input
@@ -121,7 +121,7 @@ const CreateUser = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="Active" className="mb-3 flex">
+            <label htmlFor="Active" className="flex mb-3">
               Active:
             </label>
             <input
@@ -137,7 +137,7 @@ const CreateUser = () => {
           </div>
           <button
             type="submit"
-            className="px-4 mt-10 mx-auto flex py-2 text-white w-52 justify-center bg-blue-500 rounded hover:bg-blue-600"
+            className="flex justify-center px-4 py-2 mx-auto mt-10 text-white bg-blue-500 rounded w-52 hover:bg-blue-600"
           >
             Create Users
           </button>

@@ -1,9 +1,26 @@
 # Project case 3: Frontend.
 
-## Môn CS455I
+## Class: CS455I
 
-### Thư viện: Dùng ReactJS, Tailwindcss, Shadcn ui, Axios.
+## Clone project:
 
-### UI chính:
+`git clone: https://github.com/vothanhphuoc/case3-frontend.git`
+
+## Instructions:
+
+# cmd and bash:
+
+```
+pnpm install
+pnpm run start
+```
+
+### Libraries: ReactJS, Tailwindcss, Shadcn ui, Axios.
+
+### Preview:
 
 ![Alt text](image.png)
+
+## Main function:
+
+`CRUD`

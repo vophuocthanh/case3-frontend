@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/Button'
 import { DataTable } from '@/components/ui/DataTable'
+import { toast } from '@/components/ui/use-toast'
 import axios from 'axios'
 import { Edit, Trash } from 'lucide-react'
 import React, { useEffect, useMemo, useState } from 'react'
@@ -22,6 +23,9 @@ const EmployeePage = () => {
   const [, setEmployee] = useState<Employee | null>(null)
   const [data, setData] = useState([])
   useEffect(() => {
+    document.title = 'Dashboard | Employee'
+  }, [])
+  useEffect(() => {
     const getDataEmployee = async () => {
       try {
         const res = await axios.get('http://localhost:8081/employee')
@@ -32,9 +36,41 @@ const EmployeePage = () => {
     }
     getDataEmployee()
   }, [])
-  useEffect(() => {
-    document.title = 'Dashboard | Employee'
-  }, [])
+
+  const deleteEmployeeMutation = async idEmployee => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:8081/employee/${idEmployee}`
+      )
+      if (response.status === 204) {
+        console.error('Error deleting employee')
+        toast({
+          title: 'Error',
+          description: 'Error deleting employee',
+          variant: 'error'
+        })
+        // const updatedData = data.filter(
+        //   user => user.idEm !== idEm
+        // )
+        // setData(updatedData)
+      } else {
+        console.log('Employee deleted successfully')
+        toast({
+          title: 'Success',
+          description: 'Employee deleted successfully',
+          variant: 'success'
+        })
+      }
+    } catch (error) {
+      console.error('Error deleting employee:', error)
+      toast({
+        title: 'Error',
+        description: 'Error deleting employee',
+        variant: 'error'
+      })
+    }
+  }
+
   const columns = useMemo(
     () => [
       {
@@ -119,7 +155,7 @@ const EmployeePage = () => {
               variant="outline"
               className="w-8 h-8 p-0"
               onClick={() => {
-                // deleteUserMutation(column.row.original.User_id)
+                deleteEmployeeMutation(column.row.original.idEmployee)
               }}
             >
               <Trash className="text-red-500 cursor-pointer" />
@@ -132,7 +168,7 @@ const EmployeePage = () => {
   )
   return (
     <div className="w-full p-5 mt-10">
-      <div className="mb-10 flex justify-between">
+      <div className="flex justify-between mb-10">
         <h1 className="text-3xl font-medium">Employee List</h1>
         <Link to="/employee/create">
           <Button>Create Employee</Button>

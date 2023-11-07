@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/Button'
 import { DataTable } from '@/components/ui/DataTable'
+import { toast } from '@/components/ui/use-toast'
 import axios from 'axios'
 import { Edit, Trash } from 'lucide-react'
 import React, { useEffect, useMemo, useState } from 'react'
@@ -19,6 +20,9 @@ const PayRatesPage = () => {
   const [, setPayRates] = useState<PayRates | null>(null)
   const [data, setData] = useState([])
   useEffect(() => {
+    document.title = 'Dashboard | PayRates'
+  }, [])
+  useEffect(() => {
     const getDataEmployee = async () => {
       try {
         const res = await axios.get('http://localhost:8081/pay_rates')
@@ -29,9 +33,41 @@ const PayRatesPage = () => {
     }
     getDataEmployee()
   }, [])
-  useEffect(() => {
-    document.title = 'Dashboard | PayRates'
-  }, [])
+
+  const deletePayRatesMutation = async idPay_Rates => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:8081/pay_rates/${idPay_Rates}`
+      )
+      if (response.status === 204) {
+        console.error('Error deleting payRates')
+        toast({
+          title: 'Error',
+          description: 'Error deleting payRates',
+          variant: 'error'
+        })
+        const updatedData = data.filter(
+          user => user.idPay_Rates !== idPay_Rates
+        )
+        setData(updatedData)
+      } else {
+        console.log('PayRates deleted successfully')
+        toast({
+          title: 'Success',
+          description: 'PayRates deleted successfully',
+          variant: 'success'
+        })
+      }
+    } catch (error) {
+      console.error('Error deleting PayRates:', error)
+      toast({
+        title: 'Error',
+        description: 'Error deleting PayRates',
+        variant: 'error'
+      })
+    }
+  }
+
   const columns = useMemo(
     () => [
       {
@@ -89,7 +125,7 @@ const PayRatesPage = () => {
               variant="outline"
               className="w-8 h-8 p-0"
               onClick={() => {
-                // deleteUserMutation(column.row.original.User_id)
+                deletePayRatesMutation(column.row.original.idPay_Rates)
               }}
             >
               <Trash className="text-red-500 cursor-pointer" />
@@ -102,7 +138,7 @@ const PayRatesPage = () => {
   )
   return (
     <div className="w-full p-5 mt-10">
-      <div className="mb-10 flex justify-between">
+      <div className="flex justify-between mb-10">
         <h1 className="text-3xl font-medium">PayRates List</h1>
         <Link to="/pay-rates/create">
           <Button className="mt-5">Create PayRates</Button>

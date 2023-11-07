@@ -7,7 +7,7 @@ import { DataTable } from '@/components/ui/DataTable'
 import { toast } from '@/components/ui/use-toast'
 
 export interface User {
-  User_id: string
+  User_ID: string
   User_Name: string
   Email: string
   Password: string
@@ -31,28 +31,35 @@ const users = () => {
     }
     getData()
   }, [])
-  const deleteUserMutation = async User_id => {
+  const deleteUserMutation = async User_ID => {
     try {
       const response = await axios.delete(
-        `http://localhost:8081/users/${User_id}`
+        `http://localhost:8081/users/${User_ID}`
       )
       if (response.status === 204) {
-        console.log('User deleted successfully')
-        toast({
-          title: 'Success',
-          description: 'User updated successfully',
-          variant: 'success'
-        })
-      } else {
         console.error('Error deleting user')
         toast({
           title: 'Error',
-          description: 'Error update user failed',
+          description: 'Error deleting user',
           variant: 'error'
+        })
+        const updatedData = data.filter(user => user.User_ID !== User_ID)
+        setData(updatedData)
+      } else {
+        console.log('User deleted successfully')
+        toast({
+          title: 'Success',
+          description: 'User deleted successfully',
+          variant: 'success'
         })
       }
     } catch (error) {
       console.error('Error deleting user:', error)
+      toast({
+        title: 'Error',
+        description: 'Error deleting user',
+        variant: 'error'
+      })
     }
   }
 
@@ -106,7 +113,7 @@ const users = () => {
               variant="outline"
               className="w-8 h-8 p-0"
               onClick={() => {
-                deleteUserMutation(column.row.original.User_id)
+                deleteUserMutation(column.row.original.User_ID)
               }}
             >
               <Trash className="text-red-500 cursor-pointer" />
@@ -125,26 +132,6 @@ const users = () => {
           <Button>Create User</Button>
         </Link>
       </div>
-      {/* <table>
-        <thead>
-          <th>Active</th>
-          <th>Email</th>
-          <th>Password</th>
-          <th>User_id</th>
-          <th>User_name</th>
-        </thead>
-        <tbody>
-          {data.map(d => (
-            <tr key={d.User_id}>
-              <td>{d.Active}</td>
-              <td>{d.Email}</td>
-              <td>{d.Password}</td>
-              <td>{d.User_ID}</td>
-              <td>{d.User_Name}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table> */}
       <DataTable columns={columns} data={data} />
     </div>
   )
