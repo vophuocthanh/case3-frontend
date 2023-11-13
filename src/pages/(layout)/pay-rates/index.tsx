@@ -84,7 +84,7 @@ const PayRatesPage = () => {
       },
       {
         header: 'Value',
-        accessorKey: 'Vale',
+        accessorKey: 'Value.Value',
         cell: column => <span>{column?.row?.original?.Value}</span>
       },
       {
@@ -94,7 +94,14 @@ const PayRatesPage = () => {
       },
       {
         header: 'PayType',
-        accessorKey: 'PayType.Pay_Amount',
+        accessorKey: 'PayType.Pay_Type',
+        cell: column => {
+          return <span>{column?.row?.original?.Pay_Type}</span>
+        }
+      },
+      {
+        header: 'PayAmount',
+        accessorKey: 'PayAmount.Pay_Amount',
         cell: column => {
           return <span>{column?.row?.original?.Pay_Amount}</span>
         }
@@ -112,7 +119,7 @@ const PayRatesPage = () => {
         cell: column => (
           <div className="flex justify-center gap-2">
             <Button variant="outline" className="w-8 h-8 p-0">
-              <Link to="/pay-rates/update">
+              <Link to={`/pay-rates/update/${column.row.original.idPay_Rates}`}>
                 <Edit
                   className="cursor-pointer"
                   onClick={() => {

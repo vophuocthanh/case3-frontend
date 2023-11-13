@@ -1,9 +1,10 @@
 import { toast } from '@/components/ui/use-toast'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const UpdateEmployee = () => {
+  const { Employee_Number } = useParams()
   const [employeeData, setEmployeeData] = useState({
     Employee_Number: '',
     idEmployee: '',
@@ -21,7 +22,23 @@ const UpdateEmployee = () => {
 
   useEffect(() => {
     document.title = 'Employee | Update'
-  }, [])
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8081/employee/${Employee_Number}`
+        )
+        setEmployeeData(response.data)
+      } catch (error) {
+        console.error('Error fetching employee data:', error)
+        toast({
+          title: 'Error',
+          description: 'Error fetching employee data',
+          variant: 'error'
+        })
+      }
+    }
+    fetchData()
+  }, [Employee_Number])
 
   const handleChange = e => {
     const { name, value } = e.target
@@ -61,7 +78,6 @@ const UpdateEmployee = () => {
       })
     }
   }
-
   return (
     <div className="flex flex-col items-center justify-center w-full p-4 mt-10">
       <div className="p-4">

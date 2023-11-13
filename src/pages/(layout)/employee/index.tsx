@@ -37,10 +37,10 @@ const EmployeePage = () => {
     getDataEmployee()
   }, [])
 
-  const deleteEmployeeMutation = async idEmployee => {
+  const deleteEmployeeMutation = async Employee_Number => {
     try {
       const response = await axios.delete(
-        `http://localhost:8081/employee/${idEmployee}`
+        `http://localhost:8081/employee/${Employee_Number}`
       )
       if (response.status === 204) {
         console.error('Error deleting employee')
@@ -142,7 +142,9 @@ const EmployeePage = () => {
         cell: column => (
           <div className="flex justify-center gap-2">
             <Button variant="outline" className="w-8 h-8 p-0">
-              <Link to="/employee/update">
+              <Link
+                to={`/employee/update/${column.row.original.Employee_Number}`}
+              >
                 <Edit
                   className="cursor-pointer"
                   onClick={() => {

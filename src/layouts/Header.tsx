@@ -29,12 +29,12 @@ interface Props {
 
 export default function Header({ loading }: Props) {
   const navigate = useNavigate()
-  const [data, setData] = useState([])
+  const [datas, setDatas] = useState([])
   useEffect(() => {
     const getData = async () => {
       try {
-        const res = await axios.get('http://localhost:8081/users')
-        setData(res.data)
+        const res = await axios.get('http://localhost:8081/login')
+        setDatas(res.data)
       } catch (error) {
         console.log(error)
       }
@@ -56,7 +56,7 @@ export default function Header({ loading }: Props) {
           className="object-cover w-[100px] h-[50px]"
         /> */}
         <Link to="/" className="flex items-center ml-10">
-          <h1 className="text-3xl font-medium text-center bg-gradient-to-r from-pink-400 via-blue-500 to-green-300 text-transparent bg-clip-text rounded">
+          <h1 className="text-3xl font-medium text-center text-transparent rounded bg-gradient-to-r from-pink-400 via-blue-500 to-green-300 bg-clip-text">
             Nhóm 3
           </h1>
         </Link>
@@ -85,11 +85,12 @@ export default function Header({ loading }: Props) {
                         />
                         <AvatarFallback></AvatarFallback>
                       </Avatar>
-                      {data.map(user => (
-                        <div className="w-max" key={user.User_id}>
-                          {/* <h2 className="text-slate-800">{user.User_Name}</h2> */}
+                      <div className="w-max">Account</div>
+                      {/* {datas.map((user, index) => (
+                        <div className="w-max" key={user.index}>
+                          <h2 className="text-slate-800">{user.Email}</h2>
                         </div>
-                      ))}
+                      ))} */}
                     </>
                   )}
                 </div>

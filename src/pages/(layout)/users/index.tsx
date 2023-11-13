@@ -100,13 +100,13 @@ const users = () => {
         cell: column => (
           <div className="flex justify-center gap-2">
             <Button variant="outline" className="w-8 h-8 p-0">
-              <Link to="/users/update">
+              <Link to={`/users/update/${column.row.original.User_ID}`}>
                 <Edit
                   className="cursor-pointer"
                   onClick={() => {
                     setUser(column.row.original)
                   }}
-                ></Edit>
+                />
               </Link>
             </Button>
             <Button

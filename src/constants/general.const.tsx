@@ -6,8 +6,6 @@ import {
 } from '@/components/icons'
 import React from 'react'
 
-// Your React component code here
-
 export const sidebarLinks = [
   {
     title: 'Dashboard',
