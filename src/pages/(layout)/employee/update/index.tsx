@@ -33,7 +33,7 @@ const UpdateEmployee = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8081/employee/${employeeData.Employee_Number}`,
+        `http://localhost:8081/employee/${employeeData.idEmployee}`,
         employeeData
       )
       if (response.status === 200) {
@@ -63,14 +63,14 @@ const UpdateEmployee = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center w-full p-4 mt-10">
+    <div className="p-4 flex flex-col justify-center items-center w-full mt-10">
       <div className="p-4">
-        <h2 className="items-center mx-auto mb-4 text-2xl font-semibold text-center">
+        <h2 className="mb-4 mx-auto text-center items-center text-2xl font-semibold">
           Update Employee
         </h2>
         <form onSubmit={handleUpdate}>
           <div className="mb-4">
-            <label htmlFor="Employee_Number" className="flex mb-3">
+            <label htmlFor="Employee_Number" className="mb-3 flex">
               Employee Number:
             </label>
             <input
@@ -81,11 +81,11 @@ const UpdateEmployee = () => {
               value={employeeData.Employee_Number}
               onChange={handleChange}
               required
-              className="p-2 border border-gray-300 rounded outline-none w-96"
+              className="w-96 p-2 border border-gray-300 rounded outline-none"
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="idEmployee" className="flex mb-3">
+            <label htmlFor="idEmployee" className="mb-3 flex">
               IdEmployee:
             </label>
             <input
@@ -100,7 +100,7 @@ const UpdateEmployee = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="First_Name" className="flex mb-3">
+            <label htmlFor="First_Name" className="mb-3 flex">
               First_Name:
             </label>
             <input
@@ -115,7 +115,7 @@ const UpdateEmployee = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="Last_Name" className="flex mb-3">
+            <label htmlFor="Last_Name" className="mb-3 flex">
               Last_Name:
             </label>
             <input
@@ -130,7 +130,7 @@ const UpdateEmployee = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="SSN" className="flex mb-3">
+            <label htmlFor="SSN" className="mb-3 flex">
               SSN:
             </label>
             <input
@@ -145,7 +145,7 @@ const UpdateEmployee = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="Pay_Rate" className="flex mb-3">
+            <label htmlFor="Pay_Rate" className="mb-3 flex">
               Pay_Rate:
             </label>
             <input
@@ -160,7 +160,7 @@ const UpdateEmployee = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="PayRates_id" className="flex mb-3">
+            <label htmlFor="PayRates_id" className="mb-3 flex">
               PayRates_id:
             </label>
             <input
@@ -175,7 +175,7 @@ const UpdateEmployee = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="Vacation_Days" className="flex mb-3">
+            <label htmlFor="Vacation_Days" className="mb-3 flex">
               Vacation_Days:
             </label>
             <input
@@ -190,7 +190,7 @@ const UpdateEmployee = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="Paid_To_Date" className="flex mb-3">
+            <label htmlFor="Paid_To_Date" className="mb-3 flex">
               Paid_To_Date:
             </label>
             <input
@@ -205,7 +205,7 @@ const UpdateEmployee = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="Paid_Last_Year" className="flex mb-3">
+            <label htmlFor="Paid_Last_Year" className="mb-3 flex">
               Paid_Last_Year:
             </label>
             <input
@@ -221,7 +221,7 @@ const UpdateEmployee = () => {
           </div>
           <button
             type="submit"
-            className="flex justify-center px-4 py-2 mx-auto mt-10 text-white bg-blue-500 rounded w-52 hover:bg-blue-600"
+            className="px-4 mt-10 mx-auto flex py-2 text-white w-52 justify-center bg-blue-500 rounded hover:bg-blue-600"
           >
             Update Employee
           </button>

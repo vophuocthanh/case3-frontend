@@ -29,7 +29,7 @@ interface Props {
 
 export default function Header({ loading }: Props) {
   const navigate = useNavigate()
-  const [datas, setDatas] = useState([])
+  const [, setDatas] = useState([])
   useEffect(() => {
     const getData = async () => {
       try {

@@ -42,23 +42,19 @@ const EmployeePage = () => {
       const response = await axios.delete(
         `http://localhost:8081/employee/${Employee_Number}`
       )
-      if (response.status === 204) {
-        console.error('Error deleting employee')
-        toast({
-          title: 'Error',
-          description: 'Error deleting employee',
-          variant: 'error'
-        })
-        // const updatedData = data.filter(
-        //   user => user.idEm !== idEm
-        // )
-        // setData(updatedData)
-      } else {
+      if (response.status === 200 || response.status === 204) {
         console.log('Employee deleted successfully')
         toast({
           title: 'Success',
           description: 'Employee deleted successfully',
           variant: 'success'
+        })
+      } else {
+        console.error('Error deleting employee')
+        toast({
+          title: 'Error',
+          description: 'Error deleting employee',
+          variant: 'error'
         })
       }
     } catch (error) {
@@ -157,7 +153,7 @@ const EmployeePage = () => {
               variant="outline"
               className="w-8 h-8 p-0"
               onClick={() => {
-                deleteEmployeeMutation(column.row.original.idEmployee)
+                deleteEmployeeMutation(column.row.original.Employee_Number)
               }}
             >
               <Trash className="text-red-500 cursor-pointer" />

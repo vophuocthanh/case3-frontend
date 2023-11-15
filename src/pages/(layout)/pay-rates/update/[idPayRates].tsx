@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 const UpdatePayRates = () => {
   const { idPayRates } = useParams()
+
   const [payRatesData, setPayRatesData] = useState({
     idPay_Rates: '',
     Pay_Rate_Name: '',

@@ -22,6 +22,7 @@ const UpdateEmployee = () => {
 
   useEffect(() => {
     document.title = 'Employee | Update'
+
     const fetchData = async () => {
       try {
         const response = await axios.get(
@@ -37,6 +38,7 @@ const UpdateEmployee = () => {
         })
       }
     }
+
     fetchData()
   }, [Employee_Number])
 
@@ -53,6 +55,7 @@ const UpdateEmployee = () => {
         `http://localhost:8081/employee/${employeeData.Employee_Number}`,
         employeeData
       )
+
       if (response.status === 200) {
         console.log('Employee updated successfully')
         toast({
