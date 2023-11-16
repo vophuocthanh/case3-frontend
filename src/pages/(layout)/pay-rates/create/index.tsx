@@ -49,7 +49,7 @@ const CreatePayRates = () => {
           description: 'PayRates created successfully',
           variant: 'success'
         })
-        navigate('/pay_rates')
+        navigate('/pay-rates')
       } else {
         console.error('Error creating PayRates')
         toast({
