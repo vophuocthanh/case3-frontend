@@ -9,8 +9,8 @@ import { Link } from 'react-router-dom'
 
 export default function Login() {
   const navigate = useNavigate()
-  const [email, setEmail] = useState('') // Fixed: Use state to manage email
-  const [password, setPassword] = useState('') // Fixed: Use state to manage password
+  const [email] = useState('') // Fixed: Use state to manage email
+  const [password] = useState('') // Fixed: Use state to manage password
 
   async function onSubmit(e) {
     e.preventDefault()

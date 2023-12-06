@@ -80,7 +80,7 @@ export default function Header({ loading }: Props) {
                         <AvatarFallback></AvatarFallback>
                       </Avatar>
                       <div className="w-max">
-                        {datas.map((data, index) => (
+                        {datas.map(data => (
                           <h2 className="text-slate-800" key={data.id}>
                             {data.Email}
                           </h2>
