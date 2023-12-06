@@ -14,6 +14,7 @@ export type Path =
   | `/pay-rates/create`
   | `/pay-rates/update`
   | `/pay-rates/update/:idPayRates`
+  | `/register`
   | `/users`
   | `/users/create`
   | `/users/update`

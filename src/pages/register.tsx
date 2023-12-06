@@ -5,41 +5,44 @@ import { useNavigate } from '@/router'
 import { useState } from 'react'
 import axios from 'axios'
 import { toast } from '@/components/ui/use-toast'
-import { Link } from 'react-router-dom'
 
 export default function Login() {
   const navigate = useNavigate()
-  const [email, setEmail] = useState('') // Fixed: Use state to manage email
-  const [password, setPassword] = useState('') // Fixed: Use state to manage password
-
-  async function onSubmit(e) {
+  const [email] = useState('')
+  const [password] = useState('')
+  function onSubmit(e) {
     e.preventDefault()
-    try {
-      const response = await axios.post('http://localhost:8081/login', {
-        email,
-        password
-      })
-      console.log(response)
-      toast({
-        title: 'Success',
-        description: 'Login successfully',
-        variant: 'success'
-      })
-      navigate('/')
-    } catch (error) {
-      console.error(error) // Changed: Log error to console
-      toast({
-        title: 'Error',
-        description: 'Login failed',
-        variant: 'error'
-      })
+    const getDataLogin = async () => {
+      try {
+        const response = await axios.post('http://localhost:8081/login', {
+          email,
+          password
+        })
+        console.log(response)
+        toast({
+          title: 'Success',
+          description: 'Register account successfully',
+          variant: 'success'
+        })
+        navigate('/login')
+      } catch (error) {
+        console.log(error)
+        toast({
+          title: 'Error',
+          description: 'Login failed',
+          variant: 'error'
+        })
+      }
     }
+    console.log(email, password)
+    getDataLogin()
   }
+
   return (
     <div className="flex items-center justify-center h-screen">
       <form className="flex flex-col items-center w-1/4" onSubmit={onSubmit}>
         <div className="mb-4 text-center">
-          <h2 className="mb-4 text-3xl font-semibold">Sign In</h2>
+          <h2 className="mb-4 text-3xl font-semibold">Register</h2>
           <p className="text-gray-400">Sign in to stay connected.</p>
         </div>
         <Input placeholder="Email" className="mb-4" name="Email" />
@@ -54,12 +57,9 @@ export default function Login() {
             <Checkbox />
             <span className="ml-2">Remember Me</span>
           </label>
-          <Link to="/register" className="text-blue-500">
-            Register
-          </Link>
         </div>
         <Button className="w-48" type="submit">
-          Sign In
+          Register
         </Button>
       </form>
     </div>

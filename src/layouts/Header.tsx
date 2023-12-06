@@ -29,7 +29,8 @@ interface Props {
 
 export default function Header({ loading }: Props) {
   const navigate = useNavigate()
-  const [, setDatas] = useState([])
+  const [datas, setDatas] = useState([])
+
   useEffect(() => {
     const getData = async () => {
       try {
@@ -41,23 +42,16 @@ export default function Header({ loading }: Props) {
     }
     getData()
   }, [])
+
   const logout = () => {
-    // localStorage.removeItem('access_token')
     navigate('/login')
   }
   return (
     <div className="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-purple-700 via-red-500 to-yellow-300">
       <div className="flex items-center gap-[82px] flex-1">
-        {/* <Logo /> */}
-        {/* <h1 className="text-2xl font-semibold text-primary">sậhuhdajks</h1> */}
-        {/* <image
-          xlinkHref="https://wall.vn/wp-content/uploads/2019/11/hinh-nen-minions-de-thuong-3.jpg"
-          alt="Nhom-3"
-          className="object-cover w-[100px] h-[50px]"
-        /> */}
         <Link to="/" className="flex items-center ml-10">
           <h1 className="text-3xl font-medium text-center text-transparent rounded bg-gradient-to-r from-pink-400 via-blue-500 to-green-300 bg-clip-text">
-            Nhóm 3
+            Payroll - Nhóm 3
           </h1>
         </Link>
         <Search />
@@ -85,12 +79,13 @@ export default function Header({ loading }: Props) {
                         />
                         <AvatarFallback></AvatarFallback>
                       </Avatar>
-                      <div className="w-max">Account</div>
-                      {/* {datas.map((user, index) => (
-                        <div className="w-max" key={user.index}>
-                          <h2 className="text-slate-800">{user.Email}</h2>
-                        </div>
-                      ))} */}
+                      <div className="w-max">
+                        {datas.map((data, index) => (
+                          <h2 className="text-slate-800" key={data.id}>
+                            {data.Email}
+                          </h2>
+                        ))}
+                      </div>
                     </>
                   )}
                 </div>
